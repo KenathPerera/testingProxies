@@ -31,7 +31,7 @@ public class BorrowBookControl {
 	}
 
 		
-	public void swipe(int memberId) {
+	public void swipeMemberCard(int memberId) {
 		if (!state.equals(ControlState.READY)){
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 		}
@@ -73,14 +73,14 @@ public class BorrowBookControl {
 		}
 		if (Library.Loans_Remaining_For_Member(M) - pending.size() == 0) {
 			UI.Display("Loan limit reached");
-			Complete();
+			scanComplete();
 		}
 	}
 	
 	
-	public void complete() {
+	public void scanComplete() {
 		if (pending.size() == 0) {
-			cancel();
+			borrowCancel();
 		}
 		else {
 			UI.Display("\nFinal Borrowing List");
@@ -111,7 +111,7 @@ public class BorrowBookControl {
 	}
 
 	
-	public void cancel() {
+	public void borrowCancel() {
 		UI.setState(BorrowBookUI.UI_STATE.CANCELLED);
 		state = ControlState.CANCELLED;
 	}
