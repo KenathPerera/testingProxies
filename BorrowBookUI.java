@@ -18,18 +18,18 @@ public class BorrowBookUI {
 	}
 
 	
-	private String input(String prompt) {
+	private String inputValue(String prompt) {
 		System.out.print(prompt);
 		return input.nextLine();
 	}	
 		
 		
-	private void output(Object object) {
+	private void outputValue(Object object) {
 		System.out.println(object);
 	}
 	
 			
-	public void Set_State(UI_STATE STATE) {
+	public void setState(UI_STATE STATE) {
 		this.StaTe = STATE;
 	}
 

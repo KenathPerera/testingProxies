@@ -31,11 +31,11 @@ public class BorrowBookControl {
 	}
 
 		
-	public void swipe(int MEMMER_ID) {
+	public void swipe(int memberId) {
 		if (!State.equals(CONTROL_STATE.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
-		M = LIBRARY.MEMBER(MEMMER_ID);
+		M = LIBRARY.MEMBER(memberId);
 		if (M == null) {
 			UI.Display("Invalid memberId");
 			return;
@@ -75,7 +75,7 @@ public class BorrowBookControl {
 	}
 	
 	
-	public void Complete() {
+	public void complete() {
 		if (PENDING.size() == 0) {
 			cancel();
 		}
@@ -91,7 +91,7 @@ public class BorrowBookControl {
 	}
 
 
-	public void Commit_LOans() {
+	public void commitLoans() {
 		if (!State.equals(CONTROL_STATE.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
