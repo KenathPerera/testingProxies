@@ -1,10 +1,10 @@
 import java.text.SimpleDateFormat;
-import java.util.Scanner;
+import java.util.Scanner; //importing scanner class
 
 
 public class Main {
 	
-	private static Scanner IN;
+	private static Scanner IN; //varable declaration
 	private static library LIB;
 	private static String MENU;
 	private static Calendar CAL;
@@ -120,7 +120,8 @@ public class Main {
 		output("\nEnded\n");
 	}	
 
-		private static void FINES() {
+	
+	private static void FINES() {
 		new PayFineUI(new PayFineControl()).RuN();		
 	}
 
