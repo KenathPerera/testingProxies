@@ -5,15 +5,15 @@ public class ReturnBookUI {
 
 	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
 
-	private ReturnBookControl CoNtRoL;
+	private ReturnBookControl Control;
 	private Scanner input;
-	private UI_STATE StATe;
+	private UI_STATE state;
 
 	
 	public ReturnBookUI(ReturnBookControl control) {
-		this.CoNtRoL = control;
+		this.control = control;
 		input = new Scanner(System.in);
-		StATe = UI_STATE.INITIALISED;
+		state = UI_STATE.INITIALISED;
 		control.Set_UI(this);
 	}
 
@@ -23,7 +23,7 @@ public class ReturnBookUI {
 		
 		while (true) {
 			
-			switch (StATe) {
+			switch (state) {
 			
 			case INITIALISED:
 				break;
@@ -31,7 +31,7 @@ public class ReturnBookUI {
 			case READY:
 				String Book_STR = input("Scan Book (<enter> completes): ");
 				if (Book_STR.length() == 0) {
-					CoNtRoL.Scanning_Complete();
+					C.Scanning_Complete();
 				}
 				else {
 					try {
@@ -50,7 +50,7 @@ public class ReturnBookUI {
 				if (ans.toUpperCase().equals("Y")) {					
 					Is_Damaged = true;
 				}
-				CoNtRoL.Discharge_loan(Is_Damaged);
+				Control.Discharge_loan(Is_Damaged);
 			
 			case COMPLETED:
 				output("Return processing complete");
@@ -58,7 +58,7 @@ public class ReturnBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("ReturnBookUI : unhandled state :" + StATe);			
+				throw new RuntimeException("ReturnBookUI : unhandled state :" + state);			
 			}
 		}
 	}
@@ -80,7 +80,7 @@ public class ReturnBookUI {
 	}
 	
 	public void Set_State(UI_STATE state) {
-		this.StATe = state;
+		this.state = state;
 	}
 
 	
