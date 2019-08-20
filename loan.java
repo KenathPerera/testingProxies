@@ -24,25 +24,25 @@ public class loan implements Serializable {
 
 	
 	public void checkOverDue() {
-		if (state == LOAN_STATE.CURRENT &&
-			Calendar.INSTANCE().Date().after(D)) {
-			this.state = LOAN_STATE.OVER_DUE;			
+		if (state == LoanState.CURRENT &&
+			Calendar.getInstance().Date().after(date)) {
+			this.state = LoanState.OVER_DUE;			
 		}
 	}
 
 	
-	public boolean OVer_Due() {
-		return state == LOAN_STATE.OVER_DUE;
+	public boolean overDue() {
+		return state == LoanState.OVER_DUE;
 	}
 
 	
-	public Integer ID() {
-		return ID;
+	public int id() {
+		return id;
 	}
 
 
-	public Date Get_Due_Date() {
-		return D;
+	public Date getDueDate() {
+		return date;
 	}
 	
 	
@@ -50,29 +50,29 @@ public class loan implements Serializable {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(M.GeT_ID()).append(" : ")
-		  .append(M.Get_LastName()).append(", ").append(M.Get_FirstName()).append("\n")
-		  .append("  Book ").append(B.ID()).append(" : " )
-		  .append(B.TITLE()).append("\n")
+		sb.append("Loan:  ").append(id).append("\n")
+		  .append("  Borrower ").append(member.getId()).append(" : ")
+		  .append(member.Get_LastName()).append(", ").append(member.getFirstName()).append("\n")
+		  .append("  Book ").append(book.ID()).append(" : " )
+		  .append(book.TITLE()).append("\n")
 		  .append("  DueDate: ").append(sdf.format(D)).append("\n")
 		  .append("  State: ").append(state);		
 		return sb.toString();
 	}
 
 
-	public member Member() {
-		return M;
+	public member member() {
+		return member;
 	}
 
 
-	public book Book() {
-		return B;
+	public book book() {
+		return book;
 	}
 
 
-	public void DiScHaRgE() {
-		state = LOAN_STATE.DISCHARGED;		
+	public void discharge() {
+		state = LoanState.DISCHARGED;		
 	}
 
 }
