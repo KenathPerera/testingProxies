@@ -14,7 +14,7 @@ public class Main {
 	private static String Get_menu() {
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("\nLibrary Main Menu\n\n");
+		sb.append("\nLibrary Main Menu\n\n"); //semicolon done
 		  .append("  M  : add member\n");
 		  .append("  LM : list members\n");
 		  .append("\n");
@@ -39,7 +39,7 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			IN = new Scanner(System.in);
+			in = new Scanner(System.in);
 			LIB = library.INSTANCE();
 			CAL = Calendar.INSTANCE();
 			SDF = new SimpleDateFormat("dd/MM/yyyy");
@@ -134,7 +134,6 @@ public class Main {
 	}
 
 
-
 	private static void BOOKS() {
 		output("");
 		for (book book : LIB.BOOKS()) {
@@ -143,14 +142,12 @@ public class Main {
 	}
 
 
-
 	private static void MEMBERS() {
 		output("");
 		for (member member : LIB.MEMBERS()) {
 			output(member + "\n");
 		}		
 	}
-
 
 
 	private static void BORROW_BOOK() {
@@ -211,8 +208,7 @@ public class Main {
 	private static String input(String prompt) {
 		System.out.print(prompt);
 		return IN.nextLine();
-	}
-	
+	}	
 	
 	
 	private static void output(Object object) {
