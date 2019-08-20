@@ -1,13 +1,14 @@
 import java.io.Serializable;
 
-
 @SuppressWarnings("serial")
 public class book implements Serializable {
 	
+
 	private String title;
 	private String author;
 	private String callNo;
 	private int id;
+
 	
 	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private State state;
