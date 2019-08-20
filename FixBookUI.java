@@ -11,10 +11,10 @@ public class FixBookUI {
 
 	
 	public FixBookUI(FixBookControl control) {
-		this.CoNtRoL = control;
+		this.control = control.getInstance();
 		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
-		control.Set_Ui(this);
+		state = UIState.INITIALISED;
+		control.setUI(this);
 	}
 
 
