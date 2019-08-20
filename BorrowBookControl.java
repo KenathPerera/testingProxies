@@ -5,10 +5,12 @@ public class BorrowBookControl {
 	
 	private BorrowBookUI UI;
 	
+
 	private Library library;
 	private Member member;
 	private enum ControlState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 	private ControlState state;
+
 	
 	private List<book> pending;
 	private List<loan> completed;
@@ -34,10 +36,12 @@ public class BorrowBookControl {
 	public void swipeMemberCard(int memberId) {
 		if (!state.equals(ControlState.READY)){
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
+
 		}
 		member = library.getMembers(memberId);
 		if (member == null) {
 			UI.display("Invalid memberId");
+
 			return;
 		}
 		if (library.MemberCanBorrow(Member)) {
@@ -94,8 +98,10 @@ public class BorrowBookControl {
 	}
 
 
+
 	public void commitLoans() {
 		if (!state.equals(ControlState.FINALISING)) {
+
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
 		for (book bookItem : pending) {
