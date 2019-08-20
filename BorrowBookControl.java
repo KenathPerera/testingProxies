@@ -5,7 +5,7 @@ public class BorrowBookControl {
 	
 	private BorrowBookUI UI;
 	
-	private library LIBRARY;
+	private library libraryID;
 	private member M;
 	private enum CONTROL_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 	private CONTROL_STATE State;
@@ -35,7 +35,7 @@ public class BorrowBookControl {
 		if (!State.equals(CONTROL_STATE.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
-		M = LIBRARY.MEMBER(MEMMER_ID);
+		M = LIBRARY.MEMBER(member);
 		if (M == null) {
 			UI.Display("Invalid memberId");
 			return;
@@ -91,7 +91,7 @@ public class BorrowBookControl {
 	}
 
 
-	public void Commit_LOans() {
+	public void Commit_Loans() {
 		if (!State.equals(CONTROL_STATE.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
