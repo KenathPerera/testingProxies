@@ -40,21 +40,21 @@ public class PayFineControl {
 	}
 	
 	
-	public void CaNcEl() {
+	public void Cancel() {
 		Ui.Set_State(PayFineUI.UI_STATE.CANCELLED);
 		state = CONTROL_STATE.CANCELLED;
 	}
 
 
-	public double PaY_FiNe(double AmOuNt) {
+	public double Pay_Fine(double amount) {
 		if (!StAtE.equals(CONTROL_STATE.PAYING)) {
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 		}	
-		double ChAnGe = MeMbEr.Pay_Fine(AmOuNt);
-		if (ChAnGe > 0) {
-			Ui.DiSplAY(String.format("Change: $%.2f", ChAnGe));
+		double change = MeMbEr.Pay_Fine(amount);
+		if (change > 0) {
+			Ui.DiSplAY(String.format("Change: $%.2f", change));
 		}
-		Ui.DiSplAY(MeMbEr.toString());
+		Ui.display(memberID.toString());
 		Ui.Set_State(PayFineUI.UI_STATE.COMPLETED);
 		state = CONTROL_STATE.COMPLETED;
 		return change;
