@@ -5,21 +5,21 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class loan implements Serializable {
 	
-	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
+	public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED };
 	
-	private int ID;
-	private book B;
-	private member M;
-	private Date D;
-	private LOAN_STATE state;
+	private int id;
+	private book book;
+	private member member;
+	private Date date;
+	private LoanState state;
 
 	
 	public loan(int loanId, book book, member member, Date dueDate) {
-		this.ID = loanId;
-		this.B = book;
-		this.M = member;
-		this.D = dueDate;
-		this.state = LOAN_STATE.CURRENT;
+		this.id = loanId;
+		this.book = book;
+		this.member = member;
+		this.date = dueDate;
+		this.state = LoanState.CURRENT;
 	}
 
 	
