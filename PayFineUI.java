@@ -12,7 +12,7 @@ public class PayFineUI {
 	public PayFineUI(PayFineControl control) {
 		this.control = control;
 		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
+		state = UI_STATE.INITIALISED;
 		control.Set_UI(this);
 	}
 	
@@ -48,18 +48,18 @@ public class PayFineUI {
 				double amount = 0;
 				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
 				if (Amt_Str.length() == 0) {
-					control.CaNcEl();
+					control.cancel();
 					break;
 				}
 				try {
 					amount = Double.valueOf(Amt_Str).doubleValue();
 				}
 				catch (NumberFormatException e) {}
-				if (AmouNT <= 0) {
+				if (amount <= 0) {
 					output("Amount must be positive");
 					break;
 				}
-				CoNtRoL.PaY_FiNe(AmouNT);
+				control.Pay_Fine(amount);
 				break;
 								
 			case CANCELLED:
@@ -72,7 +72,7 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
 			
 			}		
 		}		
@@ -90,7 +90,7 @@ public class PayFineUI {
 	}	
 			
 
-	public void DiSplAY(Object object) {
+	public void display(Object object) {
 		output(object);
 	}
 
