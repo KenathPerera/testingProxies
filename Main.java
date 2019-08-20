@@ -56,7 +56,7 @@ public class Main {
 			
 			boolean e = false;
 			
-			while (!e) {
+			while (!e) {  //while loop with boolean variable e
 				
 				output("\n" + SDF.format(CAL.Date()));
 				String c = input(MENU);
