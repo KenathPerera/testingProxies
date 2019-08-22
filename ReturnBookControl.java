@@ -41,7 +41,7 @@ public class ReturnBookControl {
 		current_loan = library.LOAN_BY_BOOK_ID(Book_ID);	
 		double Over_Due_Fine = 0.0;
 		if (Current_loan.Over_Due()) {
-			Over_Due_Fine = library.CalculateOverDueFine(CurrENT_loan);
+			Over_Due_Fine = library.CalculateOverDueFine(Current_loan);
 		}
 		Ui.display("Inspecting");
 		Ui.display(CUR_book.toString());
